@@ -6,8 +6,9 @@ int32_t volatile msTime = 0;
 uint32_t const timeToDelay = 3000; // 3s
 
 void SysTick_Handler(void) {
+	msTime++;
 	if (led_check == 1) {
-		msTime++;
+		
 		if (msTime >= timeToDelay) {
 			PTE -> PTOR = (1 << 29);
 			msTime = timeToDelay - 1000;
